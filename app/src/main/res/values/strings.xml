@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Date Trivia</string>
+    <string name="app_author">\@JDVilaCodes</string>
+    <string name="on_this_day">On this day in the year&#8230;</string>
+    <string name="this_happened_on_your_birthday">This happened on your birthday?</string>
+    <string name="surprise_me">Surprise Me!</string>
+</resources>
