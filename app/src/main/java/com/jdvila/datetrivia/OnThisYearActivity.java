@@ -14,7 +14,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.jdvila.datetrivia.helper.DateTimeSanitizer;
-import com.jdvila.datetrivia.model.NumberDate;
+import com.jdvila.datetrivia.model.NumberYear;
 import com.jdvila.datetrivia.networking.NumberRetrofit;
 import com.jdvila.datetrivia.networking.NumberService;
 
@@ -23,23 +23,21 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class OnBirthdayActivity extends AppCompatActivity {
-    public static final String TAG = "OnBirthdayActivity";
-    private EditText monthEditText;
-    private EditText dayEditText;
+public class OnThisYearActivity extends AppCompatActivity {
+    public static final String TAG = "OnThisYearActivity";
+    private EditText yearEditText;
     private Button submit;
-    private Toolbar actionBar;
     private AdView adView;
+    private Toolbar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_on_birthday);
-        monthEditText = (EditText) findViewById(R.id.month_edit_text);
-        dayEditText = (EditText) findViewById(R.id.day_edit_text);
+        setContentView(R.layout.activity_on_this_year);
+        yearEditText = (EditText) findViewById(R.id.year_edit_text);
         submit = (Button) findViewById(R.id.submit_button);
-        adView = findViewById(R.id.birthday_adView);
-        actionBar = (Toolbar) findViewById(R.id.birthday_toolbar);
+        adView = findViewById(R.id.year_adView);
+        actionBar = (Toolbar) findViewById(R.id.year_toolbar);
         actionBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_chevron_left_white_72dp));
         actionBar.setNavigationContentDescription("Go Back");
         actionBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -55,14 +53,11 @@ public class OnBirthdayActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String monthContents = monthEditText.getText().toString();
-                String dayContents = dayEditText.getText().toString();
-                int monthInt = (monthContents.length() > 0) ? Integer.parseInt(monthContents) : 0;
-                int dayInt = (dayContents.length() > 0) ? Integer.parseInt(dayContents) : 0;
-                if((monthContents.length() != 0) && (dayContents.length() != 0) && DateTimeSanitizer.monthDayValidator(monthInt, dayInt)) {
-                    makeBirthdayRequest(monthContents, dayContents);
+                String editContents = yearEditText.getText().toString();
+                if (!editContents.isEmpty() && DateTimeSanitizer.yearValidator(Integer.parseInt(editContents))) {
+                    makeYearRequest(editContents);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Please enter valid Month and Day Value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please Enter Valid Year Value", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -75,24 +70,23 @@ public class OnBirthdayActivity extends AppCompatActivity {
         adView.loadAd(adRequest);
     }
 
-    private void makeBirthdayRequest(final String month, final String day) {
-        final ProgressDialog pd = new ProgressDialog(OnBirthdayActivity.this);
+    private void makeYearRequest(final String year) {
+        final ProgressDialog pd = new ProgressDialog(OnThisYearActivity.this);
         pd.setMessage("loading");
         pd.show();
         Retrofit retrofit = NumberRetrofit.getRetrofitInstance();
         NumberService service = retrofit.create(NumberService.class);
-        Call<NumberDate> call = service.getBirthday(month, day);
-        call.enqueue(new Callback<NumberDate>() {
+        Call<NumberYear> call = service.getYear(year);
+        call.enqueue(new Callback<NumberYear>() {
 
             @Override
-            public void onResponse(Call<NumberDate> call, Response<NumberDate> response) {
+            public void onResponse(Call<NumberYear> call, Response<NumberYear> response) {
                 if (response.isSuccessful()) {
-                    NumberDate nd = response.body();
-                    Intent intent = new Intent(OnBirthdayActivity.this, DetailActivity.class);
-                    intent.putExtra("item", nd);
+                    NumberYear numberYear = response.body();
+                    Intent intent = new Intent(OnThisYearActivity.this, DetailActivity.class);
                     intent.putExtra("sendingActivity", TAG);
-                    intent.putExtra("month", month);
-                    intent.putExtra("day", day);
+                    intent.putExtra("item", numberYear);
+                    intent.putExtra("year", year);
                     startActivity(intent);
                     pd.dismiss();
                 } else {
@@ -102,7 +96,7 @@ public class OnBirthdayActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<NumberDate> call, Throwable t) {
+            public void onFailure(Call<NumberYear> call, Throwable t) {
                 pd.dismiss();
                 Toast.makeText(getApplicationContext(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
             }
