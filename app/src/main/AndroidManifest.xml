@@ -29,9 +29,12 @@
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".OnThisYearActivity" />
-        <activity android:name=".OnBirthdayActivity" />
-        <activity android:name=".SurpriseActivity" />
+        <activity android:name=".OnThisYearActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".OnBirthdayActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".SurpriseActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".DetailActivity"></activity>
     </application>
 

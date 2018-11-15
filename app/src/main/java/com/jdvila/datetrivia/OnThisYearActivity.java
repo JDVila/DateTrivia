@@ -28,7 +28,7 @@ public class OnThisYearActivity extends AppCompatActivity {
     private EditText yearEditText;
     private Button submit;
     private AdView adView;
-    private Toolbar actionBar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +37,10 @@ public class OnThisYearActivity extends AppCompatActivity {
         yearEditText = (EditText) findViewById(R.id.year_edit_text);
         submit = (Button) findViewById(R.id.submit_button);
         adView = findViewById(R.id.year_adView);
-        actionBar = (Toolbar) findViewById(R.id.year_toolbar);
-        actionBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_chevron_left_white_72dp));
-        actionBar.setNavigationContentDescription("Go Back");
-        actionBar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar = (Toolbar) findViewById(R.id.year_toolbar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_chevron_left_white_72dp));
+        toolbar.setNavigationContentDescription("Go Back");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

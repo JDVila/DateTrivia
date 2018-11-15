@@ -10,15 +10,16 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private Toolbar actionBar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        actionBar = (Toolbar) findViewById(R.id.main_toolbar);
-        actionBar.setTitle("");
-        setSupportActionBar(actionBar);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        toolbar.setTitle("");
+        toolbar.setOverflowIcon(getResources().getDrawable(R.drawable.ic_more_vert_white_48dp));
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -28,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.about_menu_item:
                 Toast.makeText(MainActivity.this, "Action clicked: About", Toast.LENGTH_LONG).show();
                 return true;
-            case R.id.contact_menu_item:
-                Toast.makeText(MainActivity.this, "Action clicked: Contact", Toast.LENGTH_LONG).show();
+            case R.id.see_more_menu_item:
+                Toast.makeText(MainActivity.this, "Action clicked: App Store", Toast.LENGTH_LONG).show();
                 return true;
         }
         return super.onOptionsItemSelected(item);

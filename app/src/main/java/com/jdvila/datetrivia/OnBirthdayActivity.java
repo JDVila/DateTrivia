@@ -28,7 +28,7 @@ public class OnBirthdayActivity extends AppCompatActivity {
     private EditText monthEditText;
     private EditText dayEditText;
     private Button submit;
-    private Toolbar actionBar;
+    private Toolbar toolbar;
     private AdView adView;
 
     @Override
@@ -39,10 +39,10 @@ public class OnBirthdayActivity extends AppCompatActivity {
         dayEditText = (EditText) findViewById(R.id.day_edit_text);
         submit = (Button) findViewById(R.id.submit_button);
         adView = findViewById(R.id.birthday_adView);
-        actionBar = (Toolbar) findViewById(R.id.birthday_toolbar);
-        actionBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_chevron_left_white_72dp));
-        actionBar.setNavigationContentDescription("Go Back");
-        actionBar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolbar = (Toolbar) findViewById(R.id.birthday_toolbar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_chevron_left_white_72dp));
+        toolbar.setNavigationContentDescription("Go Back");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

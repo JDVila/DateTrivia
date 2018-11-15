@@ -34,7 +34,12 @@ public class DetailActivity extends AppCompatActivity {
                 NumberYear numberYear = (NumberYear) intent.getSerializableExtra("item");
                 String year = intent.getStringExtra("year");
                 if (numberYear.date != null) {
-                    title.setText(numberYear.date + ", " + year);
+                    String date = String.valueOf(numberYear.date);
+                    String day = DateTimeSanitizer.daySanitizer(date.substring(date.length()-2).trim());
+                    int split = date.indexOf(" ");
+                    String combined =  date.substring(0, split) +
+                            " " + day + ", " + year;
+                    title.setText(combined);
                 } else {
                     title.setText("In the Year " + year);
                 }
@@ -44,9 +49,10 @@ public class DetailActivity extends AppCompatActivity {
                 NumberDate numberDate = (NumberDate) intent.getSerializableExtra("item");
                 String month = intent.getStringExtra("month");
                 String day = intent.getStringExtra("day");
-                title.setText(DateTimeSanitizer.monthSanitizer(month) + " " +
+                String combined = DateTimeSanitizer.monthSanitizer(month) + " " +
                         DateTimeSanitizer.daySanitizer(day) +
-                        ", " + numberDate.year);
+                        ", " + numberDate.year;
+                title.setText(combined);
                 body.setText(numberDate.text);
                 break;
         }
