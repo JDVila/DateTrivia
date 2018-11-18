@@ -37,7 +37,7 @@ public class OnBirthdayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_on_birthday);
         monthEditText = (EditText) findViewById(R.id.month_edit_text);
         dayEditText = (EditText) findViewById(R.id.day_edit_text);
-        submit = (Button) findViewById(R.id.submit_button);
+        submit = (Button) findViewById(R.id.birthday_submit_button);
         adView = findViewById(R.id.birthday_adView);
         toolbar = (Toolbar) findViewById(R.id.birthday_toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_chevron_left_white_72dp));
@@ -87,13 +87,7 @@ public class OnBirthdayActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<NumberDate> call, Response<NumberDate> response) {
                 if (response.isSuccessful()) {
-                    NumberDate nd = response.body();
-                    Intent intent = new Intent(OnBirthdayActivity.this, DetailActivity.class);
-                    intent.putExtra("item", nd);
-                    intent.putExtra("sendingActivity", TAG);
-                    intent.putExtra("month", month);
-                    intent.putExtra("day", day);
-                    startActivity(intent);
+                    nextActivity(response.body(), month, day);
                     pd.dismiss();
                 } else {
                     pd.dismiss();
@@ -107,5 +101,14 @@ public class OnBirthdayActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void nextActivity(NumberDate nd, String month, String day) {
+        Intent intent = new Intent(OnBirthdayActivity.this, DetailActivity.class);
+        intent.putExtra("item", nd);
+        intent.putExtra("sendingActivity", TAG);
+        intent.putExtra("month", month);
+        intent.putExtra("day", day);
+        startActivity(intent);
     }
 }

@@ -23,9 +23,9 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_year_detail);
-        title = (TextView) findViewById(R.id.year_detail_title);
-        body = (TextView) findViewById(R.id.year_detail_body);
+        setContentView(R.layout.activity_detail);
+        title = (TextView) findViewById(R.id.detail_title);
+        body = (TextView) findViewById(R.id.detail_body);
         goBack = (Button) findViewById(R.id.year_detail_return_button);
         Intent intent = getIntent();
         String sendingActivity = intent.getStringExtra("sendingActivity");
@@ -35,9 +35,9 @@ public class DetailActivity extends AppCompatActivity {
                 String year = intent.getStringExtra("year");
                 if (numberYear.date != null) {
                     String date = String.valueOf(numberYear.date);
-                    String day = DateTimeSanitizer.daySanitizer(date.substring(date.length()-2).trim());
+                    String day = DateTimeSanitizer.daySanitizer(date.substring(date.length() - 2).trim());
                     int split = date.indexOf(" ");
-                    String combined =  date.substring(0, split) +
+                    String combined = date.substring(0, split) +
                             " " + day + ", " + year;
                     title.setText(combined);
                 } else {
@@ -46,6 +46,7 @@ public class DetailActivity extends AppCompatActivity {
                 body.setText(numberYear.text);
                 break;
             case OnBirthdayActivity.TAG:
+            case SurpriseActivity.TAG:
                 NumberDate numberDate = (NumberDate) intent.getSerializableExtra("item");
                 String month = intent.getStringExtra("month");
                 String day = intent.getStringExtra("day");

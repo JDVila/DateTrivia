@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">Date Trivia</string>
+    <string name="content_description">Calendar Image</string>
     <string name="app_author">\@JDVilaCodes</string>
-    <string name="year_facts">In the year&#8230;</string>
-    <string name="birthday_facts">On your Birthday&#8230;</string>
+    <string name="year_facts">In The Year&#8230;</string>
+    <string name="birthday_facts">On Your Birthday&#8230;</string>
     <string name="surprise_me">Surprise Me!</string>
+    <string name="year_instructions">Enter\nYear\nBelow</string>
+    <string name="birthday_instructions">Enter\nBirthday\nBelow</string>
+    <string name="year_hint">yyyy</string>
+    <string name="month_hint">mm</string>
+    <string name="day_hint">dd</string>
+    <string name="slash">/</string>
 </resources>

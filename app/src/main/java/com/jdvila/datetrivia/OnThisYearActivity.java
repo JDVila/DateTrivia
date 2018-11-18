@@ -35,7 +35,7 @@ public class OnThisYearActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_this_year);
         yearEditText = (EditText) findViewById(R.id.year_edit_text);
-        submit = (Button) findViewById(R.id.submit_button);
+        submit = (Button) findViewById(R.id.year_submit_button);
         adView = findViewById(R.id.year_adView);
         toolbar = (Toolbar) findViewById(R.id.year_toolbar);
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_chevron_left_white_72dp));
@@ -82,12 +82,7 @@ public class OnThisYearActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<NumberYear> call, Response<NumberYear> response) {
                 if (response.isSuccessful()) {
-                    NumberYear numberYear = response.body();
-                    Intent intent = new Intent(OnThisYearActivity.this, DetailActivity.class);
-                    intent.putExtra("sendingActivity", TAG);
-                    intent.putExtra("item", numberYear);
-                    intent.putExtra("year", year);
-                    startActivity(intent);
+                    nextActivity(response.body(), year);
                     pd.dismiss();
                 } else {
                     pd.dismiss();
@@ -101,5 +96,13 @@ public class OnThisYearActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Please Check Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void nextActivity(NumberYear numberYear, String year) {
+        Intent intent = new Intent(OnThisYearActivity.this, DetailActivity.class);
+        intent.putExtra("sendingActivity", TAG);
+        intent.putExtra("item", numberYear);
+        intent.putExtra("year", year);
+        startActivity(intent);
     }
 }
