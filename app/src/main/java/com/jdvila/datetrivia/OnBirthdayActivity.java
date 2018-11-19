@@ -49,8 +49,10 @@ public class OnBirthdayActivity extends AppCompatActivity {
             }
         });
         MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
-        AdRequest adRequest = new AdRequest.Builder().build();
+                getResources().getString(R.string.admob_app_id));
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
         adView.loadAd(adRequest);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,13 +73,15 @@ public class OnBirthdayActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
         adView.loadAd(adRequest);
     }
 
     private void makeBirthdayRequest(final String month, final String day) {
         final ProgressDialog pd = new ProgressDialog(OnBirthdayActivity.this);
-        pd.setMessage("loading");
+        pd.setMessage(getResources().getString(R.string.loading_dialog));
         pd.show();
         Retrofit retrofit = NumberRetrofit.getRetrofitInstance();
         NumberService service = retrofit.create(NumberService.class);
@@ -105,10 +109,10 @@ public class OnBirthdayActivity extends AppCompatActivity {
 
     public void nextActivity(NumberDate nd, String month, String day) {
         Intent intent = new Intent(OnBirthdayActivity.this, DetailActivity.class);
-        intent.putExtra("item", nd);
-        intent.putExtra("sendingActivity", TAG);
-        intent.putExtra("month", month);
-        intent.putExtra("day", day);
+        intent.putExtra(getResources().getString(R.string.number_object), nd);
+        intent.putExtra(getResources().getString(R.string.sending_activity), TAG);
+        intent.putExtra(getResources().getString(R.string.month), month);
+        intent.putExtra(getResources().getString(R.string.day), day);
         startActivity(intent);
     }
 }

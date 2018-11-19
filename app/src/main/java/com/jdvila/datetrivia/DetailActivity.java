@@ -28,11 +28,11 @@ public class DetailActivity extends AppCompatActivity {
         body = (TextView) findViewById(R.id.detail_body);
         goBack = (Button) findViewById(R.id.year_detail_return_button);
         Intent intent = getIntent();
-        String sendingActivity = intent.getStringExtra("sendingActivity");
+        String sendingActivity = intent.getStringExtra(getResources().getString(R.string.sending_activity));
         switch (sendingActivity) {
             case OnThisYearActivity.TAG:
-                NumberYear numberYear = (NumberYear) intent.getSerializableExtra("item");
-                String year = intent.getStringExtra("year");
+                NumberYear numberYear = (NumberYear) intent.getSerializableExtra(getResources().getString(R.string.number_object));
+                String year = intent.getStringExtra(getResources().getString(R.string.year));
                 if (numberYear.date != null) {
                     String date = String.valueOf(numberYear.date);
                     String day = DateTimeSanitizer.daySanitizer(date.substring(date.length() - 2).trim());
@@ -47,9 +47,9 @@ public class DetailActivity extends AppCompatActivity {
                 break;
             case OnBirthdayActivity.TAG:
             case SurpriseActivity.TAG:
-                NumberDate numberDate = (NumberDate) intent.getSerializableExtra("item");
-                String month = intent.getStringExtra("month");
-                String day = intent.getStringExtra("day");
+                NumberDate numberDate = (NumberDate) intent.getSerializableExtra(getResources().getString(R.string.number_object));
+                String month = intent.getStringExtra(getResources().getString(R.string.month));
+                String day = intent.getStringExtra(getResources().getString(R.string.day));
                 String combined = DateTimeSanitizer.monthSanitizer(month) + " " +
                         DateTimeSanitizer.daySanitizer(day) +
                         ", " + numberDate.year;
@@ -59,8 +59,10 @@ public class DetailActivity extends AppCompatActivity {
         }
         adView = findViewById(R.id.year_adView);
         MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
-        AdRequest adRequest = new AdRequest.Builder().build();
+                getResources().getString(R.string.admob_app_id));
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
         adView.loadAd(adRequest);
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +75,9 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
         adView.loadAd(adRequest);
     }
 }

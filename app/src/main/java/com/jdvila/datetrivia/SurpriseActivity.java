@@ -74,8 +74,10 @@ public class SurpriseActivity extends AppCompatActivity {
         random = new Random();
 
         MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
-        AdRequest adRequest = new AdRequest.Builder().build();
+                getResources().getString(R.string.admob_app_id));
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
         adView.loadAd(adRequest);
     }
 
@@ -101,7 +103,7 @@ public class SurpriseActivity extends AppCompatActivity {
     private void makeRandomDateRequest(final String month, final String day) {
         try {
             pd = new ProgressDialog(SurpriseActivity.this);
-            pd.setMessage("loading");
+            pd.setMessage(getResources().getString(R.string.loading_dialog));
             pd.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -141,10 +143,10 @@ public class SurpriseActivity extends AppCompatActivity {
     public void nextActivity(NumberDate nd, String month, String day) {
         if (!onStopTriggered) {
             Intent intent = new Intent(SurpriseActivity.this, DetailActivity.class);
-            intent.putExtra("item", nd);
-            intent.putExtra("sendingActivity", TAG);
-            intent.putExtra("month", month);
-            intent.putExtra("day", day);
+            intent.putExtra(getResources().getString(R.string.number_object), nd);
+            intent.putExtra(getResources().getString(R.string.sending_activity), TAG);
+            intent.putExtra(getResources().getString(R.string.month), month);
+            intent.putExtra(getResources().getString(R.string.day), day);
             startActivity(intent);
             finish();
         }

@@ -47,8 +47,10 @@ public class OnThisYearActivity extends AppCompatActivity {
             }
         });
         MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
-        AdRequest adRequest = new AdRequest.Builder().build();
+                getResources().getString(R.string.admob_app_id));
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
         adView.loadAd(adRequest);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,13 +68,15 @@ public class OnThisYearActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
         adView.loadAd(adRequest);
     }
 
     private void makeYearRequest(final String year) {
         final ProgressDialog pd = new ProgressDialog(OnThisYearActivity.this);
-        pd.setMessage("loading");
+        pd.setMessage(getResources().getString(R.string.loading_dialog));
         pd.show();
         Retrofit retrofit = NumberRetrofit.getRetrofitInstance();
         NumberService service = retrofit.create(NumberService.class);
@@ -100,9 +104,9 @@ public class OnThisYearActivity extends AppCompatActivity {
 
     public void nextActivity(NumberYear numberYear, String year) {
         Intent intent = new Intent(OnThisYearActivity.this, DetailActivity.class);
-        intent.putExtra("sendingActivity", TAG);
-        intent.putExtra("item", numberYear);
-        intent.putExtra("year", year);
+        intent.putExtra(getResources().getString(R.string.sending_activity), TAG);
+        intent.putExtra(getResources().getString(R.string.number_object), numberYear);
+        intent.putExtra(getResources().getString(R.string.year), year);
         startActivity(intent);
     }
 }

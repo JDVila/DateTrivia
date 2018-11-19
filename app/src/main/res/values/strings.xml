@@ -11,4 +11,20 @@
     <string name="month_hint">mm</string>
     <string name="day_hint">dd</string>
     <string name="slash">/</string>
+    <string name="submit_button">Submit</string>
+    <string name="go_back_button">Go Back</string>
+    <string name="loading_dialog">Loading 📆&#8230;</string>
+    <string name="number_object">number_object</string>
+    <string name="sending_activity">sending_activity</string>
+    <string name="month">month</string>
+    <string name="day">day</string>
+    <string name="year">year</string>
+    <!--<string name="admob_app_id">ca-app-pub-5271447434917800~1342384602</string>-->
+    <!--<string name="admob_banner_ad_unit_id_detail_activity">ca-app-pub-5271447434917800/6039289469</string>-->
+    <!--<string name="admob_banner_ad_unit_id_year_activity">ca-app-pub-5271447434917800/6004873714</string>-->
+    <!--<string name="admob_banner_ad_unit_id_birthday_activity">ca-app-pub-5271447434917800/3301445486</string>-->
+    <!--<string name="admob_banner_ad_unit_id_surprise_activity">ca-app-pub-5271447434917800/4719712203</string>-->
+    <!--<string name="admob_banner_ad_unit_id_test_banner">ca-app-pub-3940256099942544/6300978111</string>-->
+
+
 </resources>
