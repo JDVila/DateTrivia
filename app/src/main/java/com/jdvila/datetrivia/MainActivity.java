@@ -1,6 +1,7 @@
 package com.jdvila.datetrivia;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -27,10 +28,19 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.about_menu_item:
-                Toast.makeText(MainActivity.this, "Action clicked: About", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
                 return true;
-            case R.id.see_more_menu_item:
-                Toast.makeText(MainActivity.this, "Action clicked: App Store", Toast.LENGTH_LONG).show();
+            case R.id.follow_me_menu_item:
+                Intent twitterIntent;
+                try {
+                    getApplicationContext().getPackageManager().getPackageInfo("com.twitter.android", 0);
+                    twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=JDVilaCodes"));
+                    twitterIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                } catch (Exception e) {
+                    twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/JDVilaCodes"));
+                }
+                startActivity(twitterIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

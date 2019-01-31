@@ -2,6 +2,6 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="About" android:id="@+id/about_menu_item"/>
-    <item android:title="See More" android:id="@+id/see_more_menu_item"/>
+    <item android:title="About This App" android:id="@+id/about_menu_item"/>
+    <item android:title="Follow on Twitter" android:id="@+id/follow_me_menu_item"/>
 </menu>

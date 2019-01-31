@@ -17,13 +17,15 @@ android {
             resValue "string", "admob_banner_ad_unit_id_year_activity", "ca-app-pub-3940256099942544/6300978111"
             resValue "string", "admob_banner_ad_unit_id_birthday_activity", "ca-app-pub-3940256099942544/6300978111"
             resValue "string", "admob_banner_ad_unit_id_surprise_activity", "ca-app-pub-3940256099942544/6300978111"
+            resValue "string", "admob_banner_ad_unit_id_about_activity", "ca-app-pub-3940256099942544/6300978111"
         }
         release {
-            resValue "string", "admob_app_id", "ca-app-pub-5271447434917800~1342384602"
-            resValue "string", "admob_banner_ad_unit_id_detail_activity", "ca-app-pub-5271447434917800/6039289469"
-            resValue "string", "admob_banner_ad_unit_id_year_activity", "ca-app-pub-5271447434917800/6004873714"
-            resValue "string", "admob_banner_ad_unit_id_birthday_activity", "ca-app-pub-5271447434917800/3301445486"
-            resValue "string", "admob_banner_ad_unit_id_surprise_activity", "ca-app-pub-5271447434917800/4719712203"
+            resValue "string", "admob_app_id", "ca-app-pub-3057365564090426~5825956803"
+            resValue "string", "admob_banner_ad_unit_id_detail_activity", "ca-app-pub-3057365564090426/6375910706"
+            resValue "string", "admob_banner_ad_unit_id_year_activity", "ca-app-pub-3057365564090426/7953426698"
+            resValue "string", "admob_banner_ad_unit_id_birthday_activity", "ca-app-pub-3057365564090426/3439466618"
+            resValue "string", "admob_banner_ad_unit_id_surprise_activity", "ca-app-pub-3057365564090426/9537971108"
+            resValue "string", "admob_banner_ad_unit_id_about_activity", "ca-app-pub-3057365564090426/4021210103"
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

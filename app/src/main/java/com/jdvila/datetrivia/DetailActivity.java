@@ -16,17 +16,14 @@ import com.jdvila.datetrivia.model.NumberYear;
 
 public class DetailActivity extends AppCompatActivity {
     private AdView adView;
-    private TextView title;
-    private TextView body;
-    private Button goBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        title = (TextView) findViewById(R.id.detail_title);
-        body = (TextView) findViewById(R.id.detail_body);
-        goBack = (Button) findViewById(R.id.year_detail_return_button);
+        TextView title = (TextView) findViewById(R.id.detail_title);
+        TextView body = (TextView) findViewById(R.id.detail_body);
+        Button goBack = (Button) findViewById(R.id.year_detail_return_button);
         Intent intent = getIntent();
         String sendingActivity = intent.getStringExtra(getResources().getString(R.string.sending_activity));
         switch (sendingActivity) {

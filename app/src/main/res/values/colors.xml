@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#006099</color>
-    <color name="colorPrimaryDark">#006999</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="colorBackground">#008999</color>
+    <color name="colorPrimary">#68829E</color>
+    <color name="colorPrimaryDark">#505160</color>
+    <color name="colorAccent">#AEBD38</color>
+    <color name="colorSubmit">#598234</color>
+    <color name="colorBackground">#68829E</color>
     <color name="colorTitleText">#000000</color>
     <color name="colorBodyText">#000000</color>
 </resources>

@@ -3,7 +3,7 @@
     <string name="content_description">Calendar Image</string>
     <string name="app_author">\@JDVilaCodes</string>
     <string name="year_facts">In The Year&#8230;</string>
-    <string name="birthday_facts">On Your Birthday&#8230;</string>
+    <string name="birthday_facts">On Your Birthday</string>
     <string name="surprise_me">Surprise Me!</string>
     <string name="year_instructions">Enter\nYear\nBelow</string>
     <string name="birthday_instructions">Enter\nBirthday\nBelow</string>
@@ -19,12 +19,20 @@
     <string name="month">month</string>
     <string name="day">day</string>
     <string name="year">year</string>
-    <!--<string name="admob_app_id">ca-app-pub-5271447434917800~1342384602</string>-->
-    <!--<string name="admob_banner_ad_unit_id_detail_activity">ca-app-pub-5271447434917800/6039289469</string>-->
-    <!--<string name="admob_banner_ad_unit_id_year_activity">ca-app-pub-5271447434917800/6004873714</string>-->
-    <!--<string name="admob_banner_ad_unit_id_birthday_activity">ca-app-pub-5271447434917800/3301445486</string>-->
-    <!--<string name="admob_banner_ad_unit_id_surprise_activity">ca-app-pub-5271447434917800/4719712203</string>-->
-    <!--<string name="admob_banner_ad_unit_id_test_banner">ca-app-pub-3940256099942544/6300978111</string>-->
-
-
+    <string name="about_this_app_title">About This App</string>
+    <string name="font_family_title">sans-serif-black</string>
+    <string name="font_family_body">sans-serif-light</string>
+    <string name="about_this_app_body">This Android App utilizes date facts from the NumbersApi.com website, allowing
+        the user three fun options for receiving random facts about a particular date from the year
+        1 A.D., to the current year:\n\n
+        \u25CF <u>In The Year</u>: will pull a random fact about a day from the year entered\n\n
+        \u25CF <u>On Your Birthday</u>: will pull a random fact about a day from the month and date
+        entered - try with your own Birth Date!\n\n
+        \u25CF <u>Surprise Me!</u>: will pull a random fact about a random day from a random year!\n\n
+        <b>Tech Stack:</b>\n\n
+        \u25CF written in Java (with native Android Code)\n\n
+        \u25CF connects to JSON endpoints with Retrofit2 Library\n\n
+        \u25CF built with CardViews and ConstraintLayout\n\n
+        \u25CF tested with JUnit4 unit tests\n
+        </string>
 </resources>
